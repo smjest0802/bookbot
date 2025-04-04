@@ -1,6 +1,7 @@
 from stats import count_words
 from stats import count_letters
 from stats import sort_letters
+import sys
 
 def get_book_text(filepath):
     contents = ""
@@ -11,7 +12,12 @@ def get_book_text(filepath):
     return contents
 
 def main():
-    filename = "books/frankenstein.txt"
+    args = sys.argv
+    if len(args) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    filename = sys.argv[1] 
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {filename}")
     file_contents = get_book_text(filename)
